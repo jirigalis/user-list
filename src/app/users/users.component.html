@@ -1,0 +1,10 @@
+<main class="d-flex flex-sm-row flex-column">
+    <div *ngFor="let user of users" class="card text-center m-3" style="width: 18rem;">
+        <img class="card-img-top" src="{{user.avatar}}" alt="{{user.first_name}} {{user.last_name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+            <a href="mailto:{{user.email}}" class="card-link">{{user.email}}</a>
+            <a [routerLink]="['/users', user.id]" class="btn btn-primary mt-1">Detail</a>
+        </div>
+    </div>
+</main>
