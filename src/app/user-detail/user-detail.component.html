@@ -1,10 +1,14 @@
-<button class="btn btn-primary" (click)="goBack()">Go Back</button>
-<div *ngIf="user">
-    <div class="card text-center mt-3" style="width: 18rem;">
-        <img class="card-img-top" src="{{user.avatar}}" alt="{{user.first_name}} {{user.last_name}}">
-        <div class="card-body">
-            <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
-            <a href="mailto:{{user.email}}" class="card-link">{{user.email}}</a>
-        </div>
+<div class="row">
+    <div class="col-12 col-sm-6 my-3">
+        <button class="btn btn-primary" (click)="goBack()">
+            <i class="bi bi-arrow-left pr-2"></i>
+            Go Back</button>
+    </div>
+</div>
+<div *ngIf="loading" class="spinner-border text-secondary" role="status">
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <app-user-card [user]="user"></app-user-card>
     </div>
 </div>

@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class UserDetailComponent implements OnInit {
     user?: User;
+    loading = false;
 
     constructor(
         private userService: UserService,
@@ -19,10 +20,12 @@ export class UserDetailComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.loading = true;
         const id = Number(this.route.snapshot.paramMap.get('id'));
-        this.userService
-            .getById(id)
-            .subscribe((user) => (this.user = user.data));
+        this.userService.getById(id).subscribe((user) => {
+            this.user = user ? user.data : null;
+            this.loading = false;
+        });
     }
 
     goBack(): void {

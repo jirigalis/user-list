@@ -16,7 +16,7 @@ export class DelayInterceptor implements HttpInterceptor {
         next: HttpHandler
     ): Observable<HttpEvent<unknown>> {
         const newRequest = request.clone({
-            params: request.params.set('delay', 1),
+            params: request.params.set('delay', 3),
         });
         return next.handle(newRequest);
     }

@@ -6,19 +6,19 @@ import { catchError, Observable, of } from 'rxjs';
     providedIn: 'root',
 })
 export class UserService {
-    private apiUrl = 'https://reqres.in/api';
+    private apiUrl = 'https://reqres.in/api/users';
 
     constructor(private http: HttpClient) {}
 
     getAll(page: number, perPage: number) {
         return this.http
-            .get<any>(`${this.apiUrl}/users?page=${page}&per_page=${perPage}`)
+            .get<any>(`${this.apiUrl}?page=${page}&per_page=${perPage}`)
             .pipe(catchError(this.handleError('getAll')));
     }
 
     getById(id: number) {
         return this.http
-            .get<any>(`${this.apiUrl}/users/${id}`)
+            .get<any>(`${this.apiUrl}/${id}`)
             .pipe(catchError(this.handleError(`getById id=${id}`)));
     }
 

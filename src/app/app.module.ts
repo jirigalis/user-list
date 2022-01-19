@@ -12,14 +12,24 @@ import { ErrorInterceptor } from './core/error.interceptor';
 import { DelayInterceptor } from './core/delay.interceptor';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
-    declarations: [AppComponent, LoginComponent, UsersComponent, PageNotFoundComponent, UserDetailComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        UsersComponent,
+        PageNotFoundComponent,
+        UserDetailComponent,
+        UserCardComponent,
+    ],
     imports: [
         AppRoutingModule,
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        InfiniteScrollModule,
         ReactiveFormsModule,
     ],
     providers: [

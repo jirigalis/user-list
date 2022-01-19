@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row d-flex justify-content-center">
-        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-12">
             <div class="card px-3 py-3">
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="mb-4">
@@ -21,11 +21,16 @@
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-dark w-100">
+                            <i class="bi bi-box-arrow-in-right"></i>
                             Login
                         </button>
                     </div>
                     <div class="mb-4" *ngIf="loginError">
                         <div class="alert alert-danger" role="alert">Your credentials are not correct!</div>
+                    </div>
+                    <div *ngIf="loading" class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                        </div>
                     </div>
                 </form>
             </div>

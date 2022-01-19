@@ -1,0 +1,9 @@
+<div *ngIf="user" class="card text-center my-3">
+    <img class="card-img-top" src="{{user.avatar}}" alt="{{user.first_name}} {{user.last_name}}">
+    <div class="card-body">
+        <a [routerLink]="['/users', user.id]" class="card-title text-body h5 mt-1">{{user.first_name}}
+            {{user.last_name}}</a>
+        <p><i class="bi bi-envelope-fill px-2"></i><a href="mailto:{{user.email}}" class="card-link">{{user.email}}</a>
+        </p>
+    </div>
+</div>

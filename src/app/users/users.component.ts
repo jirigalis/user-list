@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from '../models/user';
-import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,13 +8,26 @@ import { UserService } from '../services/user.service';
     styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-    users: User[];
+    users: User[] = [];
+    loading = false;
+    currentPage = 1;
+    itemsPerPage = 5;
 
     constructor(private userService: UserService) {}
 
     ngOnInit(): void {
-        this.userService
-            .getAll(1, 5)
-            .subscribe((users) => (this.users = users.data));
+        this.getUsers(1, this.itemsPerPage);
+    }
+
+    onScrollDown(ev: any) {
+        this.getUsers(this.currentPage++, this.itemsPerPage);
+    }
+
+    getUsers(page: number, count: number) {
+        this.loading = true;
+        this.userService.getAll(page, count).subscribe((users) => {
+            this.users.push(...users.data);
+            this.loading = false;
+        });
     }
 }
